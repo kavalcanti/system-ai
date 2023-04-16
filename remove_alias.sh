@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the alias you want to remove
-ALIAS_NAME="sys-ai"
+ALIAS_NAME="sms"
 
 # Check if the alias exists in the ~/.bashrc file
 if ! grep -q "alias $ALIAS_NAME=" ~/.bashrc; then

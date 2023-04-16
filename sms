@@ -26,7 +26,7 @@ def convo():
     # chat mode instance
     _DEFAULT_TEMPLATE = """A system manual and support AI responds to questions from a user.
                         The AI provides short, direct, concise and factual explanations for Linux, Unix and Windows terminal commands.
-                        The AI makes consistent use of examples and lists.
+                        The AI makes consistent use of examples and provides listed and markdown commands when possible.
                         When a command has common additional parameters or flags those are mentioned.
                         If the AI does not know the answer to a question, it truthfully says it does not know.
                         {chat_history_lines}

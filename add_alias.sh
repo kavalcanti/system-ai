@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define the alias you want to add
-ALIAS_NAME="sys-ai"
-ALIAS_COMMAND="$(cd "$(dirname "$0")" && pwd)/sys-ai"
+ALIAS_NAME="sms"
+ALIAS_COMMAND="$(cd "$(dirname "$0")" && pwd)/sms"
 
 # Check if the alias already exists in the ~/.bashrc file
 if grep -q "alias $ALIAS_NAME=" ~/.bashrc; then
