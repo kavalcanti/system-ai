@@ -13,8 +13,8 @@ You will need a working python environment first.
 Use [mamba](https://mamba.readthedocs.io/en/latest/installation.html) to manage environments:
 
 ```
-mamba create -n sys-ai
-mamba activate sys-ai
+mamba create -n sms
+mamba activate sms
 ```
 
 Clone the repository and navigate to the folder, then install the requirements.

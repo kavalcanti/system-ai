@@ -2,6 +2,7 @@
 
 import openai
 import os
+import time
 from dotenv import load_dotenv
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
@@ -20,6 +21,20 @@ load_dotenv(os.path.join(dir_path,'.env'))
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 MODEL = os.getenv("MODEL")
 
+message = [
+'-------------------------------------------------------------------------',
+'|   _____ __  __  _____                                                 |',
+'|  / ____|  \/  |/ ____|  The System Manual Submind assists with CLI.   |',
+'| | (___ | \  / | (___    This instance has limited contextual memory.  |',
+'|  \___ \| |\/| |\___ \                                                 |',
+'|  ____) | |  | |____) |  Keep queries short and on topic!              |',
+'| |_____/|_|  |_|_____/   Hit escape on empty message field to exit.    |',
+'-------------------------------------------------------------------------'
+]
+for line in message:
+    print(line)
+    time.sleep(0.03)
+
 
 def convo():
     ### BASE & SUMMARY IMPLEMENTATION
@@ -36,32 +51,24 @@ def convo():
     prompt = PromptTemplate(
         input_variables=["input", "chat_history_lines"], template=_DEFAULT_TEMPLATE
     )
-    
+
     callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
     conv_memory = ConversationBufferWindowMemory(k=4, return_messages=True, memory_key="chat_history_lines", input_key="input")
     llm = ChatOpenAI(streaming=True, model=MODEL, callback_manager=callback_manager, verbose=True, temperature=0)
-    
+
     convo = ConversationChain(memory=conv_memory, prompt=prompt, llm=llm)
-    
-    print('''
-   _____ __  __  _____
-  / ____|  \/  |/ ____|         Welcome to the System Manual Submind.
- | (___ | \  / | (___
-  \___ \| |\/| |\___ \          This submind has limited contextual memory.
-  ____) | |  | |____) |         Keep queries short and to the point!
- |_____/|_|  |_|_____/
-''')
 
     msg = ''
     while msg is not None:
-        msg = input('\nMSG: ')
+        msg = input('\nUSR:')
         if msg:
-            print('SMS:\n')
+            print('\nSMS:')
             convo.predict(input=msg)
             print('')
         else:
+            print('\nSMS:\nGoodbye!')
             break
-            
+
 
 if __name__ == '__main__':
     convo()
