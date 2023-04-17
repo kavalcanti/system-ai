@@ -43,7 +43,14 @@ def convo():
     
     convo = ConversationChain(memory=conv_memory, prompt=prompt, llm=llm)
     
-    print('Welcome to the System Manual Submind.\n\nThis submind has limited contextual memory.\nKeep queries short and to the point!')
+    print('''
+   _____ __  __  _____
+  / ____|  \/  |/ ____|         Welcome to the System Manual Submind.
+ | (___ | \  / | (___
+  \___ \| |\/| |\___ \          This submind has limited contextual memory.
+  ____) | |  | |____) |         Keep queries short and to the point!
+ |_____/|_|  |_|_____/
+''')
 
     msg = ''
     while msg is not None:
