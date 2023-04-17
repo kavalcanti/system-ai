@@ -56,7 +56,7 @@ def convo():
     while msg is not None:
         msg = input('\nMSG: ')
         if msg:
-            print('SMS')
+            print('SMS:\n')
             convo.predict(input=msg)
             print('')
         else:
