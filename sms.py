@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
-
-import openai
-import os
+ import os
 import time
 from dotenv import load_dotenv
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.llms import OpenAI
 from langchain.chains import ConversationChain
-from langchain.prompts import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
-from langchain.callbacks.base import CallbackManager
+from langchain.callbacks import BaseCallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.memory import ConversationBufferWindowMemory
 
@@ -52,7 +47,7 @@ def convo():
         input_variables=["input", "chat_history_lines"], template=_DEFAULT_TEMPLATE
     )
 
-    callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
+    callback_manager = BaseCallbackManager([StreamingStdOutCallbackHandler()])
     conv_memory = ConversationBufferWindowMemory(k=4, return_messages=True, memory_key="chat_history_lines", input_key="input")
     llm = ChatOpenAI(streaming=True, model=MODEL, callback_manager=callback_manager, verbose=True, temperature=0)
 

@@ -2,7 +2,7 @@
 
 # Define the alias you want to add
 ALIAS_NAME="sms"
-ALIAS_COMMAND="$(cd "$(dirname "$0")" && pwd)/sms"
+ALIAS_COMMAND="$(cd "$(dirname "$0")" && pwd)/sms.py"
 
 # Check if the alias already exists in the ~/.bashrc file
 if grep -q "alias $ALIAS_NAME=" ~/.bashrc; then
