@@ -13,7 +13,7 @@ You will need a working python environment first.
 Use [mamba](https://mamba.readthedocs.io/en/latest/installation.html) to manage environments:
 
 ```
-mamba create -n sms
+mamba create -n sms python=3.10
 mamba activate sms
 ```
 
